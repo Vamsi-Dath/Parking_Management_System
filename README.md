@@ -21,3 +21,4 @@ GitHub : [dmaria21](https://github.com/dmaria21)
 
 ## Parking Management System
 
+![Entity Relation Diagram](ER.png)
