@@ -1,5 +1,5 @@
 # CS 480 (Database systems) Group Project
-### Team -10
+### Team- 10
 
 ## Member details :
 - Meha Mallu,
@@ -21,4 +21,8 @@ GitHub : [dmaria21](https://github.com/dmaria21)
 
 ## Parking Management System
 
-![Entity Relation Diagram](ER.png)
+## Requirement Analysis
+![Requirement_Analysis](Requirement_Analysis.png)
+
+## Relational Schema
+![Relational_Schema](Relational_Schema.png)
