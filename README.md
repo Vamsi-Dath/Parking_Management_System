@@ -24,5 +24,8 @@ GitHub : [dmaria21](https://github.com/dmaria21)
 ## Requirement Analysis
 ![Requirement_Analysis](Requirement_Analysis.png)
 
+## Entity Relationship Model
+![Entity_Relationship_Model](Entity_Relationship_Model.png)
+
 ## Relational Schema
 ![Relational_Schema](Relational_Schema.png)
