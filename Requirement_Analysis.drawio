@@ -1,0 +1,19 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" version="24.8.1">
+  <diagram name="Page-1" id="vHsAWBMNzdLUwWCajh46">
+    <mxGraphModel dx="1522" dy="842" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="KMOO_Gk84iolF-SHhbX0-1" value="Requirement Analysis - Parking Management System" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=39;" vertex="1" parent="1">
+          <mxGeometry x="60" y="50" width="1050" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="KMOO_Gk84iolF-SHhbX0-2" value="The parking management system stores information about parking zones, parking slots, incharges, vehicles and owners.&lt;div style=&quot;font-size: 23px;&quot;&gt;&lt;br style=&quot;font-size: 23px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 23px;&quot;&gt;Parking zones have a zone code associated with them. For each of the parking zone we store a record of its incharge and capacity.&lt;/div&gt;&lt;div style=&quot;font-size: 23px;&quot;&gt;&lt;br style=&quot;font-size: 23px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 23px;&quot;&gt;Each parking slot is located in a parking zone and have a specific slot id. A parking slot can have a vehicle parked in it, but there may be slots that are currently empty. Each slot has a specific type: small, medium or heavy, corresponding to the size of the vehicle that can be parked in it.&lt;/div&gt;&lt;div style=&quot;font-size: 23px;&quot;&gt;&lt;br style=&quot;font-size: 23px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 23px;&quot;&gt;Vehicles have their own registration number and are associated with an owner. For each vehicle we store its brand, year of manufacture and vehicle type: small, medium or heavy, describing its size.&lt;/div&gt;&lt;div style=&quot;font-size: 23px;&quot;&gt;&lt;br style=&quot;font-size: 23px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 23px;&quot;&gt;Owners are identified with their owner id. We store their first name, lastname and one or more phone numbers.&lt;/div&gt;&lt;div style=&quot;font-size: 23px;&quot;&gt;&lt;br style=&quot;font-size: 23px;&quot;&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 23px;&quot;&gt;Incharges are identified with their employee id. We store their name and salary along with their manager id. Each manager is inturn an incharge and have their own employee id associated with them. We also store their phone numbers, which can be one or more.Incharges are assigned to parking zones that they need to take care of. Each parking zone irrespective of them having a vehicle or being empty have an incharge assigned to it. An incharge can take care of several parking zones. An incharge can have no parking slots allotted to them.&lt;/div&gt;&lt;div style=&quot;font-size: 23px;&quot;&gt;&lt;br style=&quot;font-size: 23px;&quot;&gt;&lt;/div&gt;" style="text;align=left;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=23;fontStyle=0;fontFamily=Georgia;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=30;glass=0;shadow=1;spacingRight=10;spacingLeft=10;spacingBottom=10;spacingTop=10;" vertex="1" parent="1">
+          <mxGeometry x="80" y="110" width="1010" height="680" as="geometry" />
+        </mxCell>
+        <mxCell id="KMOO_Gk84iolF-SHhbX0-3" value="Contributor: Vamsi Dath Meka" style="text;strokeColor=none;align=center;fillColor=none;html=1;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=3" vertex="1" parent="1">
+          <mxGeometry x="20" y="810" width="180" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
