@@ -1,0 +1,10 @@
+INSERT INTO Incharge VALUES ('emp_001',NULL,'Damon Salvatore', 120000);
+INSERT INTO Incharge VALUES ('emp_002','emp_001','Elena Gilbert', 80000);
+INSERT INTO Incharge VALUES ('emp_003',NULL,'Niklaus Michaelson', 100000);
+INSERT INTO Incharge VALUES ('emp_004','emp_003','Stefan Slavatore', 70000);
+INSERT INTO Incharge VALUES ('emp_005','emp_003','Katherine Pierce', 75000);
+INSERT INTO Incharge VALUES ('emp_006','emp_001','Caroline Forbes', 85000);
+INSERT INTO Incharge VALUES ('emp_007','emp_003','Bonnie Bennett', 60000);
+INSERT INTO Incharge VALUES ('emp_008','emp_003','Enzo', 80000);
+INSERT INTO Incharge VALUES ('emp_009','emp_003','Lexi Branson', 80000);
+INSERT INTO Incharge VALUES ('emp_010','emp_001','Silas', 70000);
