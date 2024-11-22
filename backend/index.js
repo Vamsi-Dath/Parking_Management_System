@@ -98,4 +98,11 @@ app.get('/api/vehicles', (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
+    console.log('Access Parking Slots at http://localhost:3000/api/parking-spots');
+    console.log('Access Parking Zones at http://localhost:3000/api/parking-zones');
+    console.log('Access Owners at http://localhost:3000/api/owners');
+    console.log('Access Owner Phone Directory at http://localhost:3000/api/owner-phone-directory');
+    console.log('Access Incharges at http://localhost:3000/api/incharges');
+    console.log('Access Incharge Phone Directory at http://localhost:3000/api/incharge-phone-directory');
+    console.log('Access Vehicles at http://localhost:3000/api/vehicles');
 });
