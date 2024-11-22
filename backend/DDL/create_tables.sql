@@ -12,8 +12,8 @@ CREATE TABLE Incharge (
 
 CREATE TABLE Owner (
     OwnerID VARCHAR(20) PRIMARY KEY,
-    FirstName VARCHAR(20) NOT NULL,
-    LastName VARCHAR(20) NOT NULL
+    first_name VARCHAR(20) NOT NULL,
+    last_name VARCHAR(20) NOT NULL
 );
 
 CREATE TABLE ParkingZone (
