@@ -36,7 +36,7 @@ CREATE TABLE ParkingSlot (
     SlotID VARCHAR(10) PRIMARY KEY,
     VehicleRegNo VARCHAR(20),
     ZoneCode VARCHAR(10) NOT NULL,
-    VehicleType VARCHAR(10),
+    Type VARCHAR(10),
     FOREIGN KEY (VehicleRegNo) REFERENCES Vehicle(VehicleRegNo),
     FOREIGN KEY (ZoneCode) REFERENCES ParkingZone(ZoneCode)
 );
