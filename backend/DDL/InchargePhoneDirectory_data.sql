@@ -1,0 +1,15 @@
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_001', '987-654-3210');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_002', '876-543-2109');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_003', '765-432-1098');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_004', '654-321-0987');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_005', '543-210-9876');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_006', '432-109-8765');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_007', '321-098-7654');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_008', '210-987-6543');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_009', '109-876-5432');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_010', '098-765-4321');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_001', '567-890-1230');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_002', '678-901-2340');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_005', '789-012-3450');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_008', '890-123-4560');
+INSERT INTO InchargePhoneDirectory(EmpID, PhoneNumber) VALUES ('emp_010', '901-234-5670');
