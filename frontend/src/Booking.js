@@ -9,6 +9,7 @@ function Booking() {
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [zone, setZone] = useState(null);
 
   const handleOpenModal = (zone, slot) => {
     setSelectedZone(zone);
@@ -23,6 +24,18 @@ function Booking() {
       .then((data) => {
         console.log('Fetched data:', data);
         setData(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('ERROR:', err.message);
+        setLoading(false);
+      });
+
+    fetch('/api/getZones')
+      .then((res) => res.json())
+      .then((data) => {
+        console.log('Fetched data:', data);
+        setZone(data);
         setLoading(false);
       })
       .catch((err) => {
@@ -45,6 +58,17 @@ function Booking() {
     
     <div className="App">
       <h1>Parking Management System</h1>
+      <div>
+        <h2>ParkingZones</h2>
+        <div>
+          <select>
+            <option>Select Zone</option>
+            {zone.map((zone) => (
+              <option key={zone.ZoneCode}>{zone.ZoneCode}</option>
+            ))}
+          </select>
+        </div>
+      </div>
       <div>
         <h2>Parking Slots</h2>
         <div style={{ padding: '20px' }}>
