@@ -1,0 +1,32 @@
+.zone{
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 8px;
+    width: 150px;
+    text-align: center;
+  }
+  
+  .slot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    font-size: 12px; 
+    font-weight: bold;
+    color: black; 
+    text-align: center; 
+    box-sizing: border-box; 
+  }
+  
+  .red {
+    background-color: red;
+    cursor: default;
+  }
+  
+  .green {
+    background-color: green;
+    cursor: pointer;
+  }
