@@ -36,12 +36,13 @@ function Booking() {
       <div>
         <h2>Parking Slots</h2>
         <div style={{ padding: '20px' }}>
-          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+          <div className = "ParkingZones">
             {Object.keys(groupedData).map((zone) => (
               <div className="zone" key={zone.slotId}>
                 <h3 style={{ textAlign: 'center' }}>Zone {zone}</h3>
+                <hr className = "line" />
 
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                <div className='parkingSlots'>
                   {groupedData[zone].map((slot) => (
                     <div key={slot.slotId} className={slot.VehicleRegNo ? 'slot red' : 'slot green'}
                     title={
