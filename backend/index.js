@@ -13,6 +13,19 @@ const db = mysql.createConnection({
     database: 'pms'
 });
 
+app.get('/api/getZones', (req, res) => {
+    console.log('Fetch unique parking zones');
+    db.query('SELECT DISTINCT ZoneCode FROM ParkingSlot', (err, result) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+            return;
+        }
+
+        res.json(result);
+    });
+});
+
 app.get('/api/parking-spots', (req, res) => {
     console.log('Fetch parking-slots');
     db.query('SELECT * FROM ParkingSlot', (err, result) => {
