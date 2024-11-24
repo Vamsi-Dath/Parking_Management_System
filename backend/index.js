@@ -103,6 +103,20 @@ app.get('/api/vehicles', (req, res) => {
     });
 });
 
+// to get the distinct zones
+app.get('/api/getZones', (req, res) => {
+    console.log('Fetch Zones');
+    db.query('SELECT DISTINCT ZoneCode FROM ParkingSlot', (err, result) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+            return;
+        }
+
+        res.json(result);
+    });
+});
+
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
     console.log(`Access Parking Slots at http://localhost:${port}/api/parking-spots`);

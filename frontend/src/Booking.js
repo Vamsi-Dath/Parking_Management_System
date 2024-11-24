@@ -1,9 +1,21 @@
 import './Booking.css';
 import { useEffect, useState } from 'react';
+import SlotForm from './SlotForm';
 
 function Booking() {
+  const [showModal, setShowModal] = useState(false);
+  const [selectedSlot, setSelectedSlot] = useState(null);
+  const [selectedZone, setSelectedZone] = useState(null);
+
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+
+  const handleOpenModal = (zone, slot) => {
+    setSelectedZone(zone);
+    setSelectedSlot(slot);
+    setShowModal(true);
+  };
+
 
   useEffect(() => {
     fetch('/api/parking-spots')
@@ -44,12 +56,13 @@ function Booking() {
 
                 <div className='parkingSlots'>
                   {groupedData[zone].map((slot) => (
-                    <div key={slot.slotId} className={slot.VehicleRegNo ? 'slot red' : 'slot green'}
+                    <div key={slot.SlotID} className={slot.VehicleRegNo ? 'slot red' : 'slot green'}
                     title={
                       slot.VehicleRegNo
-                        ? `${slot.SlotID} - Occupied: Vehicle Registration No.: ${slot.VehicleRegNo}`
-                        : `${slot.SlotID} - Empty`
+                        ? `${slot.SlotID} - Occupied;\nVehicle Reg. No.: ${slot.VehicleRegNo}; \nType: ${slot.Type};`
+                        : `${slot.SlotID} - Empty; \nType: ${slot.Type};\nClick to book the slot`
                     }
+                    onClick={() => !slot.VehicleRegNo && handleOpenModal(slot.ZoneCode, slot.SlotID)}
                     >
                       {slot.SlotID} 
                     </div>
@@ -58,6 +71,18 @@ function Booking() {
               </div>
             ))}
           </div>
+          {showModal && (
+            <div className="modal">
+              <div className="modal-content">
+                <span className="close-btn" onClick={() => setShowModal(false)}>&times;</span>
+                <SlotForm
+                  selectedSlot={selectedSlot}
+                  selectedZone={selectedZone}
+                  closeModal={() => setShowModal(false)}
+                />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
