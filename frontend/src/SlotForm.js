@@ -8,19 +8,21 @@ const SlotForm = ({ handleSubmit, selectedSlot, selectedZone, closeModal }) => {
   const [zones, setZones] = useState([]);
   const [error, setError] = useState(null);
   const [selectedZoneValue, setSelectedZoneValue] = useState(selectedZone);
+  const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
-    fetch('http://localhost:3000/api/getZones') 
-      .then((res) => res.json()) 
-      .then((data) => {
-        console.log('Fetched zones:', data);
-        setZones(data);
-      })
-      .catch((err) => {
-        setError(err.message); 
-        console.error('Error fetching zones:', err);
-      });
+    fetch('/api/getZones')
+    .then((res) => res.json())
+    .then((data) => {
+      console.log('Zones data:', data);
+      setZones(data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error('ERROR:', err.message);
+      setLoading(false);
+    });
   }, []); 
 
   const handleFormSubmit = async (e) => {
