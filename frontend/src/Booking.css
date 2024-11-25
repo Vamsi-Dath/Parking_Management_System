@@ -1,79 +1,88 @@
-.zone{
-    border: 1px solid black;
-    padding: 10px;
-    border-radius: 8px;
-    width: 150px;
-    text-align: center;
-  }
-  
-  .slot {
-    width: 28px;
-    height: 46px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid black;
-    font-size: 12px; 
-    font-weight: bold;
-    color: black; 
-    text-align: center; 
-    box-sizing: border-box; 
-  }
-  
-  .red {
-    background-color: rgb(221, 111, 111);
-    cursor: default;
-  }
-  
-  .green {
-    background-color: rgb(105, 180, 105);
-    cursor: pointer;
-  }
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
 
-  .line {
-    border: 1px solid black;
-    width: 95%;
-    margin: 5px auto;
-    margin-bottom: 25px;
-  }
+.zone {
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 8px;
+  width: 150px;
+  text-align: center;
+}
 
-  .ParkingZones {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center; 
-    text-align: center;  
-    align-items: stretch; 
-  }
-  
-  .ParkingZones > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; 
-    height: 230px;  
-    width: 200px; 
-    border: 2px solid black;  
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  
-  .parkingSlots {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center; 
-    text-align: center;     
-  }
+.slot {
+  width: 28px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid black;
+  font-size: 12px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  box-sizing: border-box;
+}
 
-  /* Modal styles */
+.red {
+  background-color: rgb(221, 111, 111);
+  cursor: default;
+}
+
+.green {
+  background-color: rgb(105, 180, 105);
+  cursor: pointer;
+}
+
+.line {
+  border: 1px solid black;
+  width: 95%;
+  margin: 5px auto;
+  margin-bottom: 25px;
+}
+
+.ParkingZones {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  align-items: stretch;
+}
+
+.ParkingZones > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: auto;
+  width: 200px;
+  border: 2px solid black;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.parkingSlots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Modal styles */
 .modal {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.2); 
+  background-color: rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,8 +94,8 @@
   border-radius: 5px;
   text-align: center;
   min-width: 300px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-  position: relative; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
 .close-btn {
@@ -99,5 +108,39 @@
 }
 
 .close-btn:hover {
-  color: #f00; 
+  color: #f00;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+  padding: 20px;
+  width: auto;
+  border-left: 2px solid #ccc;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.menu-button {
+  background-color: #f4c83a;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.menu-button:hover {
+  background-color: #ed9a2e;
+  transform: scale(1.05);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.menu-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 5px;
 }
