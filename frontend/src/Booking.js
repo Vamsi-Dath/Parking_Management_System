@@ -12,12 +12,47 @@ function Booking() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const [removeModal, setRemoveModal] = useState({
+    open: false,
+    zoneCode: null,
+    slotID: null,
+    vehicleRegNo: null,
+  });
+
   const handleOpenModal = (zone, slot, type) => {
     setSelectedZone(zone);
     setSelectedSlot(slot);
     setSlotType(type);
     setShowModal(true);
   };
+
+  const handleRemoveModal = (zoneCode, slotID, vehicleRegNo) => {
+    setRemoveModal({ open: true, zoneCode, slotID, vehicleRegNo });
+  };
+
+  const handleCloseRemoveModal = () => {
+    setRemoveModal({ open: false, zoneCode: null, slotID: null, vehicleRegNo: null });
+  };
+
+  const handleVacateSlot = () => {
+    const { slotID, vehicleRegNo } = removeModal;
+    console.log(`Vacating slot ${slotID} with vehicle registration number ${vehicleRegNo}`);
+    
+    fetch(`/api/vacate-slot`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ vehicleRegNo, slotID }),  
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Slot vacated successfully:", data);
+        handleCloseRemoveModal();
+      })
+      .catch((error) => console.error("Error vacating slot:", error));
+
+      window.location.reload();
+  };
+  
 
   useEffect(() => {
     fetch("/api/parking-spots")
@@ -70,8 +105,9 @@ function Booking() {
                             : `${slot.SlotID} - Empty; \nType: ${slot.Type};\nClick to book the slot`
                         }
                         onClick={() =>
-                          !slot.VehicleRegNo &&
-                          handleOpenModal(slot.ZoneCode, slot.SlotID, slot.Type)
+                          slot.VehicleRegNo
+                            ? handleRemoveModal(slot.ZoneCode, slot.SlotID, slot.VehicleRegNo)
+                            : handleOpenModal(slot.ZoneCode, slot.SlotID, slot.Type)
                         }
                       >
                         {slot.SlotID}
@@ -81,6 +117,23 @@ function Booking() {
                 </div>
               ))}
             </div>
+
+            {removeModal.open && (
+              <div className="modal">
+                <div className="modal-content">
+                  <h2>Vacate Slot</h2>
+                  <p>
+                    Are you sure you want to vacate slot{" "}
+                    <strong>{removeModal.slotID}</strong> with vehicle registration
+                    number <strong>{removeModal.vehicleRegNo}</strong>?
+                  </p>
+                  <div className="modal-actions">
+                    <button onClick={handleCloseRemoveModal}>Close</button>
+                    <button onClick={handleVacateSlot}>Vacate</button>
+                  </div>
+                </div>
+              </div>
+            )}
             {showModal && (
               <div className="modal">
                 <div className="modal-content">

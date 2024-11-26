@@ -272,6 +272,68 @@ app.get("/api/vehicles", (_, res) => {
   });
 });
 
+// API to vacate a parking sot
+app.post("/api/vacate-slot", (req, res) => {
+  console.log(req.body);
+  const { vehicleRegNo, slotID } = req.body;
+  console.log("vehicle num is:", vehicleRegNo);
+
+  const deleteVehicleQuery = "DELETE FROM Vehicle WHERE VehicleRegNo = ?";
+  const updateParkingSlotQuery = "UPDATE ParkingSlot SET VehicleRegNo = NULL WHERE SlotID = ?";
+
+  function commitTransaction() {
+    return new Promise((resolve, reject) => {
+      db.commit((err) => {
+        if (err) {
+          return db.rollback(() => {
+            reject(err);
+          });
+        }
+        resolve();
+      });
+    });
+  }
+
+  db.beginTransaction((err) => {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+      return;
+    }
+  
+    // updates the vehicle registration to null in the ParkingSlot table for the given slot ID
+    db.query(updateParkingSlotQuery, [slotID], (err) => {
+      if (err) {
+        return db.rollback(() => {
+          console.log(err);
+          res.sendStatus(500);
+        });
+      }
+
+      // Deletes the vehicle from the Vehicle table
+      db.query(deleteVehicleQuery, [vehicleRegNo], (err) => {
+        if (err) {
+          return db.rollback(() => {
+            console.log(err);
+            res.sendStatus(500);
+          });
+        }
+
+        commitTransaction()
+          .then(() => {
+            console.log("Transaction committed");
+            res.status(200).json({ message: "Slot vacated successfully", success: true });
+          })
+          .catch((err) => {
+            console.log(err);
+            res.sendStatus(500);
+          });
+      });
+    });
+  });
+});
+
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
   console.log(

@@ -30,6 +30,9 @@ const SlotForm = ({ selectedSlot, selectedZone, slotType, closeModal }) => {
     }
     
     closeModal();
+
+    window.location.reload();
+
   };
 
   return (
@@ -79,7 +82,7 @@ const SlotForm = ({ selectedSlot, selectedZone, slotType, closeModal }) => {
         <br />
         <div className="book-slot" style={{ justifyContent: 'flex-start', justifyItems: 'left' }}>
           <div>
-            <label htmlFor="firstName">*Vehicle Owner(firstname) :</label>
+            <label htmlFor="firstName">*Vehicle Owner(First Name) :</label>
             <input
               id="firstName"
               type="text"
@@ -90,7 +93,7 @@ const SlotForm = ({ selectedSlot, selectedZone, slotType, closeModal }) => {
           </div>
           <br />
           <div>
-            <label htmlFor="lastName">*Vehicle Owner(lastname) :</label>
+            <label htmlFor="lastName">*Vehicle Owner(Last Name) :</label>
             <input
               id="lastName"
               type="text"
