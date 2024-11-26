@@ -144,3 +144,12 @@
   align-items: center;
   gap: 5px;
 }
+
+.modal-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center; 
+  gap: 20px; 
+  padding: 10px; 
+}
+
