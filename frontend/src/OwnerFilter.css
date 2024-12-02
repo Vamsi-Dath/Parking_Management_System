@@ -1,0 +1,86 @@
+/* Styling for the overall owner filter container */
+.owner-filter {
+  background-color: #c8d6ce;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 500px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+.owner-filter h3 {
+  font-size: 1.5rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.owner-filter form label {
+  display: block;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.owner-filter form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddedd9;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.owner-filter form input:focus {
+  outline: none;
+  border-color: #4caf50;
+}
+
+.owner-filter form button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.owner-filter form button:hover {
+  background-color: #45a049;
+}
+
+.owner-filter ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 15px 0 0 0;
+  background-color: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.owner-filter ul li {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.owner-filter ul li:last-child {
+  border-bottom: none;
+}
+
+.owner-filter p {
+  font-size: 1rem;
+  color: #777;
+  text-align: center;
+  margin-top: 15px;
+}
