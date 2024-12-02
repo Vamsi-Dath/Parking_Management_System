@@ -9,7 +9,7 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "pms-password",
+  password: "pw",
   database: "pms",
 });
 
@@ -279,7 +279,8 @@ app.post("/api/vacate-slot", (req, res) => {
   console.log("vehicle num is:", vehicleRegNo);
 
   const deleteVehicleQuery = "DELETE FROM Vehicle WHERE VehicleRegNo = ?";
-  const updateParkingSlotQuery = "UPDATE ParkingSlot SET VehicleRegNo = NULL WHERE SlotID = ?";
+  const updateParkingSlotQuery =
+    "UPDATE ParkingSlot SET VehicleRegNo = NULL WHERE SlotID = ?";
 
   function commitTransaction() {
     return new Promise((resolve, reject) => {
@@ -300,7 +301,7 @@ app.post("/api/vacate-slot", (req, res) => {
       res.sendStatus(500);
       return;
     }
-  
+
     // updates the vehicle registration to null in the ParkingSlot table for the given slot ID
     db.query(updateParkingSlotQuery, [slotID], (err) => {
       if (err) {
@@ -322,7 +323,9 @@ app.post("/api/vacate-slot", (req, res) => {
         commitTransaction()
           .then(() => {
             console.log("Transaction committed");
-            res.status(200).json({ message: "Slot vacated successfully", success: true });
+            res
+              .status(200)
+              .json({ message: "Slot vacated successfully", success: true });
           })
           .catch((err) => {
             console.log(err);
@@ -333,7 +336,34 @@ app.post("/api/vacate-slot", (req, res) => {
   });
 });
 
+app.get("/api/get-owner-details", (req, res) => {
+  const { firstName, lastName } = req.query;
+  if (!firstName || !lastName) {
+    return res.status(400).send("First name and last name are required.");
+  }
+  const getAllOwnersQuery = `SELECT Owner.first_name, Owner.last_name,
+  OwnerPhoneDirectory.PhoneNumber,
+  Vehicle.VehicleRegNo,
+  ParkingSlot.SlotID,
+  ParkingSlot.ZoneCode
+  FROM Owner
+  JOIN OwnerPhoneDirectory ON Owner.OwnerID = OwnerPhoneDirectory.OwnerID
+  LEFT JOIN Vehicle ON Vehicle.OwnerID = Owner.OwnerID
+  LEFT JOIN ParkingSlot ON Vehicle.VehicleRegNo = ParkingSlot.VehicleRegNo
+  WHERE LOWER(Owner.first_name) = LOWER(?) AND LOWER(Owner.last_name) = LOWER(?)
+`;
 
+  db.query(getAllOwnersQuery, [firstName, lastName], (err, result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send("Database query failed.");
+    }
+    if (result.length === 0) {
+      return res.status(404).send("No owner details found.");
+    }
+    res.json(result);
+  });
+});
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
   console.log(
@@ -351,4 +381,7 @@ app.listen(port, () => {
     `Access Incharge Phone Directory at http://localhost:${port}/api/incharge-phone-directory`
   );
   console.log(`Access Vehicles at http://localhost:${port}/api/vehicles`);
+  console.log(
+    `Access Owner Details at http://localhost:${port}/api/get-owner-details`
+  );
 });
