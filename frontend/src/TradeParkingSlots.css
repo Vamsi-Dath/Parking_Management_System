@@ -20,7 +20,7 @@ h4 {
 }
 
 /* Slot container */
-.slot-container {
+.slotz-container {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
@@ -29,7 +29,7 @@ h4 {
 }
 
 /* Slot styling */
-.slot {
+.slotz {
   padding: 15px;
   border: 2px solid #ccc;
   border-radius: 5px;
@@ -40,19 +40,19 @@ h4 {
 }
 
 /* Highlight selected slot */
-.slot.selected {
+.slotz.selected {
   background-color: #aef;
   border-color: #5c6bc0;
   transform: scale(1.05);
 }
 
 /* Hover effect for slots */
-.slot:hover {
+.slotz:hover {
   background-color: #f0f0f0;
 }
 
 /* Slot text (zone and vehicle info) */
-.slot p {
+.slotz p {
   margin: 5px 0;
   font-size: 14px;
   color: #555;
@@ -83,7 +83,7 @@ p {
 }
 
 /* Ensure all slot containers and lists are centered properly */
-.slot-container {
+.slotz-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

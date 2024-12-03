@@ -55,14 +55,14 @@ function TradeParkingSlots() {
 
       <div>
         <h4>Occupied Slots</h4>
-        <div className="slot-container">
+        <div className="slotz-container">
           {slots.map((slot) => (
             <div
               key={slot.SlotID}
               onClick={() =>
                 handleSlotSelect(slot, selectedSlots.slot1 ? "slot2" : "slot1")
               }
-              className={`slot ${
+              className={`slotz ${
                 selectedSlots.slot1?.SlotID === slot.SlotID ||
                 selectedSlots.slot2?.SlotID === slot.SlotID
                   ? "selected"
@@ -89,18 +89,6 @@ function TradeParkingSlots() {
             : "Select Slot 2"}
         </p>
         <button onClick={handleTrade}>Trade Slots</button>
-      </div>
-
-      <div>
-        <h4>Updated Slot Assignments</h4>
-        <div className="slot-container">
-          {slots.map((slot) => (
-            <div key={slot.SlotID} className="slot">
-              Zone {slot.ZoneCode} - Slot {slot.SlotID}{" "}
-              {slot.VehicleRegNo ? ` - Occupied by ${slot.VehicleRegNo}` : ""}
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );
