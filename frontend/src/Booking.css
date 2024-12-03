@@ -11,22 +11,23 @@
   border: 1px solid black;
   padding: 10px;
   border-radius: 8px;
-  width: 150px;
+  width: 50px;
   text-align: center;
 }
 
 .slot {
-  width: 28px;
-  height: 46px;
+  width: 50px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 1px solid black;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: bold;
   color: black;
   text-align: center;
   box-sizing: border-box;
+  border-radius: 4px;
 }
 
 .red {
@@ -37,6 +38,11 @@
 .green {
   background-color: rgb(105, 180, 105);
   cursor: pointer;
+  transition: transform 0.2s;
+}
+.green:hover {
+  transform: scale(1.1);
+  background-color: rgb(85, 160, 85);
 }
 
 .line {
@@ -48,7 +54,7 @@
 
 .ParkingZones {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
@@ -75,7 +81,6 @@
   text-align: center;
 }
 
-/* Modal styles */
 .modal {
   position: fixed;
   top: 0;
@@ -148,8 +153,7 @@
 .modal-actions {
   margin-top: 20px;
   display: flex;
-  justify-content: center; 
-  gap: 20px; 
-  padding: 10px; 
+  justify-content: center;
+  gap: 20px;
+  padding: 10px;
 }
-
