@@ -1,19 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import "./TradeParkingSlots.css";
 
 function TradeParkingSlots() {
-  const [slots, setSlots] = useState([
-    { SlotID: "SLOT101", ZoneCode: "A8", VehicleRegNo: "UT1234" },
-    { SlotID: "SLOT102", ZoneCode: "D1", VehicleRegNo: "FL3456" },
-    { SlotID: "SLOT103", ZoneCode: "C2", VehicleRegNo: "WA5678" },
-    { SlotID: "SLOT104", ZoneCode: "B2", VehicleRegNo: "AZ3456" },
-  ]);
-
+  const [slots, setSlots] = useState([]);
   const [selectedSlots, setSelectedSlots] = useState({
     slot1: null,
     slot2: null,
   });
 
-  // Handle slot selection
+  // slot data from api
+  useEffect(() => {
+    fetch("http://localhost:9000/api/parking-spots")
+      .then((response) => response.json())
+      .then((data) => {
+        // only show occupied slots
+        const occupiedSlots = data.filter((slot) => slot.VehicleRegNo !== null);
+        setSlots(occupiedSlots);
+      })
+      .catch((error) => {
+        console.error("Error fetching parking slots:", error);
+      });
+  }, []);
+
   const handleSlotSelect = (slot, slotNumber) => {
     setSelectedSlots((prev) => ({
       ...prev,
@@ -44,38 +52,40 @@ function TradeParkingSlots() {
   return (
     <div className="trade-parking-slots">
       <h3>Trade Parking Slots</h3>
+
       <div>
-        <h4>Booked Slots</h4>
-        <ul>
+        <h4>Occupied Slots</h4>
+        <div className="slot-container">
           {slots.map((slot) => (
-            <li
+            <div
               key={slot.SlotID}
               onClick={() =>
                 handleSlotSelect(slot, selectedSlots.slot1 ? "slot2" : "slot1")
               }
               className={`slot ${
-                slot.VehicleRegNo ? "booked" : "available"
-              } ${selectedSlots.slot1?.SlotID === slot.SlotID ||
+                selectedSlots.slot1?.SlotID === slot.SlotID ||
                 selectedSlots.slot2?.SlotID === slot.SlotID
-                ? "selected"
-                : ""}`}
+                  ? "selected"
+                  : ""
+              }`}
             >
-              Zone {slot.ZoneCode} {/* Only display Zone Code */}
-            </li>
+              Zone {slot.ZoneCode} - Slot {slot.SlotID} (Vehicle:{" "}
+              {slot.VehicleRegNo})
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
 
       <div>
         <h4>Selected Slots for Trade</h4>
         <p>
           {selectedSlots.slot1
-            ? `Slot 1: Zone ${selectedSlots.slot1.ZoneCode}`
+            ? `Slot 1: Zone ${selectedSlots.slot1.ZoneCode} - Slot ${selectedSlots.slot1.SlotID}`
             : "Select Slot 1"}
         </p>
         <p>
           {selectedSlots.slot2
-            ? `Slot 2: Zone ${selectedSlots.slot2.ZoneCode}`
+            ? `Slot 2: Zone ${selectedSlots.slot2.ZoneCode} - Slot ${selectedSlots.slot2.SlotID}`
             : "Select Slot 2"}
         </p>
         <button onClick={handleTrade}>Trade Slots</button>
@@ -83,14 +93,14 @@ function TradeParkingSlots() {
 
       <div>
         <h4>Updated Slot Assignments</h4>
-        <ul>
+        <div className="slot-container">
           {slots.map((slot) => (
-            <li key={slot.SlotID}>
-              Zone {slot.ZoneCode} {/* Only display Zone Code */}
+            <div key={slot.SlotID} className="slot">
+              Zone {slot.ZoneCode} - Slot {slot.SlotID}{" "}
               {slot.VehicleRegNo ? ` - Occupied by ${slot.VehicleRegNo}` : ""}
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );

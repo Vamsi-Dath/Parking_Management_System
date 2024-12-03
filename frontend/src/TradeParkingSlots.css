@@ -1,3 +1,90 @@
-.slot.available {
-  font-size: 23px; /* Smaller text for available slots */
+/* Container styling */
+.trade-parking-slots {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f4f4f9; /* Light background for better contrast */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+/* Heading styles */
+h3 {
+  text-align: center;
+  color: #333;
+}
+
+h4 {
+  color: #444;
+}
+
+/* Slot container */
+.slot-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+/* Slot styling */
+.slot {
+  padding: 15px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  width: 180px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Highlight selected slot */
+.slot.selected {
+  background-color: #aef;
+  border-color: #5c6bc0;
+  transform: scale(1.05);
+}
+
+/* Hover effect for slots */
+.slot:hover {
+  background-color: #f0f0f0;
+}
+
+/* Slot text (zone and vehicle info) */
+.slot p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Button styling */
+button {
+  background-color: #5c6bc0;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  margin: 20px auto;
+  display: block;
+}
+
+button:hover {
+  background-color: #3f51b5;
+}
+
+/* Selected slot text */
+p {
+  color: #333;
+  font-size: 16px;
+}
+
+/* Ensure all slot containers and lists are centered properly */
+.slot-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
