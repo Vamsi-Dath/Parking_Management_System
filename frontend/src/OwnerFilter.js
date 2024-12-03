@@ -84,7 +84,7 @@ function OwnerFilter() {
       ) : (
         <p>
           {firstName && lastName
-            ? `No details found for ${firstName} ${lastName}.`
+            ? `Click Submit to view details for ${firstName} ${lastName}.`
             : "Enter name to view your current info."}
         </p>
       )}
