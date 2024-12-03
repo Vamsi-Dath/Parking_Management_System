@@ -9,7 +9,7 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "pw",
+  password: "pms-password",
   database: "pms",
 });
 
@@ -343,6 +343,9 @@ app.get("/api/get-owner-details", (req, res) => {
   }
   const getAllOwnersQuery = `SELECT Owner.first_name, Owner.last_name,
   OwnerPhoneDirectory.PhoneNumber,
+  Vehicle.Brand,
+  Vehicle.YearOfManufacture,
+  Vehicle.VehicleType,
   Vehicle.VehicleRegNo,
   ParkingSlot.SlotID,
   ParkingSlot.ZoneCode
