@@ -28,7 +28,20 @@ function OwnerFilter() {
       })
       .then((ownerDetails) => {
         console.log("Fetched owner details:", ownerDetails);
-        setFilteredSlots(ownerDetails);
+
+        // Deduplicate by combining SlotID, VehicleRegNo, and ZoneCode
+        const uniqueSlots = ownerDetails.filter(
+          (slot, index, self) =>
+            index ===
+            self.findIndex(
+              (s) =>
+                s.VehicleRegNo === slot.VehicleRegNo &&
+                s.SlotID === slot.SlotID &&
+                s.ZoneCode === slot.ZoneCode
+            )
+        );
+
+        setFilteredSlots(uniqueSlots);
       })
       .catch((error) => {
         console.error("Error fetching owner details:", error);
@@ -68,15 +81,19 @@ function OwnerFilter() {
           </h4>
           <ul>
             {filteredSlots.map((slot) => (
-              <li key={slot.SlotID || `${slot.VehicleRegNo}-no-slot`}>
-                {slot.SlotID && slot.ZoneCode ? (
-                  <>
-                    Zone {slot.ZoneCode} - Slot {slot.SlotID} - Vehicle:{" "}
-                    {slot.VehicleRegNo}
-                  </>
-                ) : (
-                  <>Vehicle {slot.VehicleRegNo} is not occupying a slot.</>
-                )}
+              <li
+                key={slot.SlotID || `${slot.VehicleRegNo}-no-slot`}
+                className="slot-item"
+              >
+                <span className="slot-left">
+                  {slot.SlotID && slot.ZoneCode
+                    ? `Zone ${slot.ZoneCode}: Slot ${slot.SlotID}`
+                    : "No slot being occupied"}
+                </span>
+                <span className="slot-right">
+                  {slot.VehicleRegNo} {slot.VehicleType} {slot.Brand}{" "}
+                  {slot.YearOfManufacture}
+                </span>
               </li>
             ))}
           </ul>
@@ -84,7 +101,7 @@ function OwnerFilter() {
       ) : (
         <p>
           {firstName && lastName
-            ? `No details found for ${firstName} ${lastName}.`
+            ? `Click Submit to view details.`
             : "Enter name to view your current info."}
         </p>
       )}
