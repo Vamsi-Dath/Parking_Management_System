@@ -1,4 +1,3 @@
-/* Styling for the overall owner filter container */
 .owner-filter {
   background-color: #c8d6ce;
   border-radius: 8px;
@@ -68,14 +67,44 @@
 }
 
 .owner-filter ul li {
-  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
   border-bottom: 1px solid #ddd;
   font-size: 0.95rem;
   color: #333;
+  gap: 10px;
 }
 
 .owner-filter ul li:last-child {
   border-bottom: none;
+}
+
+.slot-left {
+  font-weight: bold;
+  color: #2c3e50;
+  margin-right: 50px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slot-right {
+  font-style: italic;
+  color: #555;
+  text-align: right;
+  white-space: nowrap;
+  flex: 0 0 auto;
+}
+
+.slot-single {
+  font-style: italic;
+  color: #555;
+  font-weight: 300;
+  text-align: left;
+  width: 100%;
 }
 
 .owner-filter p {
@@ -83,4 +112,8 @@
   color: #777;
   text-align: center;
   margin-top: 15px;
+}
+
+.owner-filter ul li:hover {
+  background-color: #f4f9f4;
 }
