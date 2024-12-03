@@ -28,8 +28,6 @@ function OwnerFilter() {
       })
       .then((ownerDetails) => {
         console.log("Fetched owner details:", ownerDetails);
-
-        // Deduplicate by combining SlotID, VehicleRegNo, and ZoneCode
         const uniqueSlots = ownerDetails.filter(
           (slot, index, self) =>
             index ===
@@ -48,7 +46,6 @@ function OwnerFilter() {
         alert(error.message);
       });
   };
-
   return (
     <div className="owner-filter">
       <h3>Look up Owner Details</h3>
@@ -101,7 +98,7 @@ function OwnerFilter() {
       ) : (
         <p>
           {firstName && lastName
-            ? `No details found for ${firstName} ${lastName}.`
+            ? `Click Submit to view details for ${firstName} ${lastName}.`
             : "Enter name to view your current info."}
         </p>
       )}
